@@ -1,0 +1,1197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Demo_Data_EnteredModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Enrollement">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="t_id" Type="varchar" MaxLength="50" />
+          <Property Name="c_id" Type="varchar" MaxLength="50" />
+          <Property Name="s_id" Type="varchar" MaxLength="50" />
+          <Property Name="semester" Type="varchar" MaxLength="50" />
+          <Property Name="grade" Type="char" MaxLength="10" />
+          <Property Name="e_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="s_id" Type="varchar" MaxLength="50" />
+          <Property Name="time" Type="varchar" MaxLength="50" />
+          <Property Name="v_id" Type="varchar" MaxLength="50" />
+          <Property Name="session" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="h_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lesson_Plan">
+          <Key>
+            <PropertyRef Name="less_id" />
+          </Key>
+          <Property Name="c_id" Type="varchar" MaxLength="50" />
+          <Property Name="less_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="week" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="List_Topic">
+          <Key>
+            <PropertyRef Name="topic_id" />
+          </Key>
+          <Property Name="topic_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="less_id" Type="varchar" MaxLength="50" />
+          <Property Name="topic_name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="s_id" Type="varchar" MaxLength="50" />
+          <Property Name="v_data_id" Type="varchar" MaxLength="50" />
+          <Property Name="notes" Type="varchar(max)" />
+          <Property Name="session" Type="varchar" MaxLength="50" />
+          <Property Name="n_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Presentation">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="s_id" Type="varchar" MaxLength="50" />
+          <Property Name="topic_id" Type="varchar" MaxLength="50" />
+          <Property Name="p_date" Type="date" />
+          <Property Name="session" Type="varchar" MaxLength="50" />
+          <Property Name="t_id" Type="varchar" MaxLength="50" />
+          <Property Name="marks" Type="float" />
+          <Property Name="p_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="s_id" Type="varchar" MaxLength="50" />
+          <Property Name="rate" Type="float" />
+          <Property Name="v_data_id" Type="varchar" MaxLength="50" />
+          <Property Name="session" Type="varchar" MaxLength="50" />
+          <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="sec_id" />
+          </Key>
+          <Property Name="sec_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sec_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" />
+          <Property Name="designation" Type="varchar" MaxLength="50" />
+          <Property Name="fac_type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="video_data">
+          <Key>
+            <PropertyRef Name="v_data_id" />
+          </Key>
+          <Property Name="v_data_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="v_id" Type="varchar" MaxLength="50" />
+          <Property Name="topic_id" Type="varchar" MaxLength="50" />
+          <Property Name="start_time" Type="varchar" MaxLength="50" />
+          <Property Name="end_time" Type="varchar" MaxLength="50" />
+          <Property Name="key_word" Type="nchar" MaxLength="100" />
+          <Property Name="url" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="v_id" />
+          </Key>
+          <Property Name="v_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tiltle" Type="varchar" MaxLength="50" />
+          <Property Name="t_id" Type="varchar" MaxLength="50" />
+          <Property Name="session" Type="varchar" MaxLength="50" />
+          <Property Name="url" Type="varchar" MaxLength="50" />
+          <Property Name="less_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Enrollement_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollement_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollement_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Videos">
+          <End Role="Videos" Type="Self.Videos" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="v_id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="v_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Plan_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Lesson_Plan">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_Topic_Lesson_Plan">
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="0..1" />
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson_Plan">
+              <PropertyRef Name="less_id" />
+            </Principal>
+            <Dependent Role="List_Topic">
+              <PropertyRef Name="less_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_video_data">
+          <End Role="video_data" Type="Self.video_data" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="video_data">
+              <PropertyRef Name="v_data_id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="v_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_List_Topic">
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_Topic">
+              <PropertyRef Name="topic_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="topic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_video_data">
+          <End Role="video_data" Type="Self.video_data" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="video_data">
+              <PropertyRef Name="v_data_id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="v_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="sec_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="sec_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_video_data_List_Topic">
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="0..1" />
+          <End Role="video_data" Type="Self.video_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_Topic">
+              <PropertyRef Name="topic_id" />
+            </Principal>
+            <Dependent Role="video_data">
+              <PropertyRef Name="topic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_video_data_Videos">
+          <End Role="Videos" Type="Self.Videos" Multiplicity="0..1" />
+          <End Role="video_data" Type="Self.video_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="v_id" />
+            </Principal>
+            <Dependent Role="video_data">
+              <PropertyRef Name="v_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Lesson_Plan">
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="0..1" />
+          <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson_Plan">
+              <PropertyRef Name="less_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="less_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Demo_Data_EnteredModelStoreContainer">
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrollement" EntityType="Self.Enrollement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson_Plan" EntityType="Self.Lesson_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_Topic" EntityType="Self.List_Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presentation" EntityType="Self.Presentation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="video_data" EntityType="Self.video_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Enrollement_Course" Association="Self.FK_Enrollement_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Enrollement" EntitySet="Enrollement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollement_Student" Association="Self.FK_Enrollement_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Enrollement" EntitySet="Enrollement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollement_Teacher" Association="Self.FK_Enrollement_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Enrollement" EntitySet="Enrollement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Student" Association="Self.FK_History_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Videos" Association="Self.FK_History_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Plan_Course" Association="Self.FK_Lesson_Plan_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_Topic_Lesson_Plan" Association="Self.FK_List_Topic_Lesson_Plan">
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+            <End Role="List_Topic" EntitySet="List_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Student" Association="Self.FK_Notes_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_video_data" Association="Self.FK_Notes_video_data">
+            <End Role="video_data" EntitySet="video_data" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_List_Topic" Association="Self.FK_Presentation_List_Topic">
+            <End Role="List_Topic" EntitySet="List_Topic" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_Student" Association="Self.FK_Presentation_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_Teacher" Association="Self.FK_Presentation_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Student" Association="Self.FK_Rate_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_video_data" Association="Self.FK_Rate_video_data">
+            <End Role="video_data" EntitySet="video_data" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Section" Association="Self.FK_Student_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_User" Association="Self.FK_Student_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_video_data_List_Topic" Association="Self.FK_video_data_List_Topic">
+            <End Role="List_Topic" EntitySet="List_Topic" />
+            <End Role="video_data" EntitySet="video_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_video_data_Videos" Association="Self.FK_video_data_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="video_data" EntitySet="video_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Lesson_Plan" Association="Self.FK_Videos_Lesson_Plan">
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Teacher" Association="Self.FK_Videos_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Demo_Data_EnteredModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Enrollement">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="t_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="c_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="grade" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="e_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="h_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="v_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="h_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Lesson_Plan">
+          <Key>
+            <PropertyRef Name="less_id" />
+          </Key>
+          <Property Name="c_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="week" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="List_Topic">
+          <Key>
+            <PropertyRef Name="topic_id" />
+          </Key>
+          <Property Name="topic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="topic_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="v_data_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="n_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Presentation">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="topic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="p_date" Type="DateTime" Precision="0" />
+          <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="t_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marks" Type="Double" />
+          <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rate1" Type="Double" />
+          <Property Name="v_data_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="r_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="sec_id" />
+          </Key>
+          <Property Name="sec_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sec_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fac_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="video_data">
+          <Key>
+            <PropertyRef Name="v_data_id" />
+          </Key>
+          <Property Name="v_data_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="v_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="topic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="key_word" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="v_id" />
+          </Key>
+          <Property Name="v_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tiltle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="t_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Enrollement_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lesson_Plan_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Lesson_Plan">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollement_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enrollement_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Enrollement" Type="Self.Enrollement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Enrollement">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Videos">
+          <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="v_id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="v_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_Topic_Lesson_Plan">
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="0..1" />
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson_Plan">
+              <PropertyRef Name="less_id" />
+            </Principal>
+            <Dependent Role="List_Topic">
+              <PropertyRef Name="less_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Lesson_Plan">
+          <End Role="Lesson_Plan" Type="Self.Lesson_Plan" Multiplicity="0..1" />
+          <End Role="Videos" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson_Plan">
+              <PropertyRef Name="less_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="less_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_List_Topic">
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_Topic">
+              <PropertyRef Name="topic_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="topic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_video_data_List_Topic">
+          <End Role="List_Topic" Type="Self.List_Topic" Multiplicity="0..1" />
+          <End Role="video_data" Type="Self.video_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_Topic">
+              <PropertyRef Name="topic_id" />
+            </Principal>
+            <Dependent Role="video_data">
+              <PropertyRef Name="topic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_video_data">
+          <End Role="video_data" Type="Self.video_data" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="video_data">
+              <PropertyRef Name="v_data_id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="v_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presentation_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_video_data">
+          <End Role="video_data" Type="Self.video_data" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="video_data">
+              <PropertyRef Name="v_data_id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="v_data_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="sec_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="sec_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Videos" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_video_data_Videos">
+          <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="video_data" Type="Self.video_data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Videos">
+              <PropertyRef Name="v_id" />
+            </Principal>
+            <Dependent Role="video_data">
+              <PropertyRef Name="v_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Demo_Data_EnteredEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Enrollements" EntityType="Self.Enrollement" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="Lesson_Plan" EntityType="Self.Lesson_Plan" />
+          <EntitySet Name="List_Topic" EntityType="Self.List_Topic" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="Presentations" EntityType="Self.Presentation" />
+          <EntitySet Name="Rates" EntityType="Self.Rate" />
+          <EntitySet Name="Sections" EntityType="Self.Section" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="video_data" EntityType="Self.video_data" />
+          <EntitySet Name="Videos" EntityType="Self.Video" />
+          <AssociationSet Name="FK_Enrollement_Course" Association="Self.FK_Enrollement_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Enrollement" EntitySet="Enrollements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_Plan_Course" Association="Self.FK_Lesson_Plan_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollement_Student" Association="Self.FK_Enrollement_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Enrollement" EntitySet="Enrollements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enrollement_Teacher" Association="Self.FK_Enrollement_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Enrollement" EntitySet="Enrollements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Student" Association="Self.FK_History_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Videos" Association="Self.FK_History_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_Topic_Lesson_Plan" Association="Self.FK_List_Topic_Lesson_Plan">
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+            <End Role="List_Topic" EntitySet="List_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Lesson_Plan" Association="Self.FK_Videos_Lesson_Plan">
+            <End Role="Lesson_Plan" EntitySet="Lesson_Plan" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_List_Topic" Association="Self.FK_Presentation_List_Topic">
+            <End Role="List_Topic" EntitySet="List_Topic" />
+            <End Role="Presentation" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_video_data_List_Topic" Association="Self.FK_video_data_List_Topic">
+            <End Role="List_Topic" EntitySet="List_Topic" />
+            <End Role="video_data" EntitySet="video_data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Student" Association="Self.FK_Notes_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_video_data" Association="Self.FK_Notes_video_data">
+            <End Role="video_data" EntitySet="video_data" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_Student" Association="Self.FK_Presentation_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Presentation" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presentation_Teacher" Association="Self.FK_Presentation_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Presentation" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Student" Association="Self.FK_Rate_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_video_data" Association="Self.FK_Rate_video_data">
+            <End Role="video_data" EntitySet="video_data" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Section" Association="Self.FK_Student_Section">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_User" Association="Self.FK_Student_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_User" Association="Self.FK_Teacher_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Teacher" Association="Self.FK_Videos_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_video_data_Videos" Association="Self.FK_video_data_Videos">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="video_data" EntitySet="video_data" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Demo_Data_EnteredModelStoreContainer" CdmEntityContainer="Demo_Data_EnteredEntities">
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrollements">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Enrollement">
+              <MappingFragment StoreEntitySet="Enrollement">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="semester" ColumnName="semester" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="h_id" ColumnName="h_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesson_Plan">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Lesson_Plan">
+              <MappingFragment StoreEntitySet="Lesson_Plan">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="less_id" ColumnName="less_id" />
+                <ScalarProperty Name="week" ColumnName="week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_Topic">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.List_Topic">
+              <MappingFragment StoreEntitySet="List_Topic">
+                <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+                <ScalarProperty Name="less_id" ColumnName="less_id" />
+                <ScalarProperty Name="topic_name" ColumnName="topic_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="v_data_id" ColumnName="v_data_id" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="n_id" ColumnName="n_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presentations">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Presentation">
+              <MappingFragment StoreEntitySet="Presentation">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+                <ScalarProperty Name="p_date" ColumnName="p_date" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="marks" ColumnName="marks" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rates">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="rate1" ColumnName="rate" />
+                <ScalarProperty Name="v_data_id" ColumnName="v_data_id" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="sec_id" ColumnName="sec_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="sec_id" ColumnName="sec_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="fac_type" ColumnName="fac_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="video_data">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.video_data">
+              <MappingFragment StoreEntitySet="video_data">
+                <ScalarProperty Name="v_data_id" ColumnName="v_data_id" />
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="key_word" ColumnName="key_word" />
+                <ScalarProperty Name="url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="Demo_Data_EnteredModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="v_id" ColumnName="v_id" />
+                <ScalarProperty Name="tiltle" ColumnName="tiltle" />
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="less_id" ColumnName="less_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

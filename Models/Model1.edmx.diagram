@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="711ba1f6d8ac4a8a8bfbdb4776a5c7b1" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Course" Width="1.5" PointX="3.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Enrollement" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.History" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Lesson_Plan" Width="1.5" PointX="6" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.List_Topic" Width="1.5" PointX="8.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Note" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Presentation" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Rate" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Section" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Student" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Teacher" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.User" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.video_data" Width="1.5" PointX="10.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Demo_Data_EnteredModel.Video" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Enrollement_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Lesson_Plan_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Enrollement_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Enrollement_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_History_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_History_Videos" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_List_Topic_Lesson_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Videos_Lesson_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Presentation_List_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_video_data_List_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Notes_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Notes_video_data" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Presentation_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Presentation_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Rate_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Rate_video_data" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Student_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Student_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Teacher_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_Videos_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="Demo_Data_EnteredModel.FK_video_data_Videos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

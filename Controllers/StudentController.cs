@@ -1,6 +1,7 @@
 ﻿using FlipTech_FYP.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -52,7 +53,8 @@ namespace FlipTech_FYP.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage getTopics(string courseId, 
+        public HttpResponseMessage getTopics(
+            string courseId, 
             String week)
         {
             /*  select * from List_Topic t join Lesson_Plan l 
@@ -69,8 +71,7 @@ namespace FlipTech_FYP.Controllers
 
         [HttpGet]
         public HttpResponseMessage getVideos(
-            string lessonId, 
-            string topicId)
+            string lessonId)
         {
             /* var = SELECT * from videos where less_id = 'lesson-2'
              * select * from video_data where topic_id = "" and var.v_id == ""
@@ -87,7 +88,7 @@ namespace FlipTech_FYP.Controllers
             var metaData = db.video_data
             .Where
             (
-                m => m.topic_id == topicId && m.v_id == v.v_id
+                m => m.v_id == v.v_id
             )?.ToList();
 
            
@@ -107,13 +108,25 @@ namespace FlipTech_FYP.Controllers
 
             using (var ctx = new Demo_Data_EnteredEntities())
             {
-                ctx.Rates.Add(new Rate()
+                var qry = db.Rates.SingleOrDefault
+                    (x => x.v_data_id == videoDataId && x.s_id == studentId);
+
+                if (qry != null)
                 {
-                   s_id = studentId,
-                   session = v.session,
-                   v_data_id = videoDataId,
-                   rate1 = rate
-            });
+                    // The value exists .Update
+                    qry.rate1 = rate;
+                    ctx.Entry(qry).State = EntityState.Modified;
+                }
+                else
+                {
+                    ctx.Rates.Add(new Rate()
+                    {
+                        s_id = studentId,
+                        session = v.session,
+                        v_data_id = videoDataId,
+                        rate1 = rate
+                    });
+                }
 
                 ctx.SaveChanges();
             }
@@ -150,6 +163,23 @@ namespace FlipTech_FYP.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, "history saved on " + time);
 
+        }
+
+        [HttpGet]
+        public HttpResponseMessage getViews()
+        {
+            var ctx = new Demo_Data_EnteredEntities();
+            int views = ctx.Histories.Count();
+            return Request.CreateResponse(HttpStatusCode.OK, views);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage getComulativeRating()
+        {
+            var ctx = new Demo_Data_EnteredEntities();
+            var ratingSum = ctx.Rates.Select(r => r.rate1).Sum();
+            float comulativeRating = (float)(ratingSum /ctx.Rates.Count());
+            return Request.CreateResponse(HttpStatusCode.OK, comulativeRating);
         }
 
     }

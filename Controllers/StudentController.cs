@@ -182,5 +182,33 @@ namespace FlipTech_FYP.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, comulativeRating);
         }
 
+        [HttpPost]
+        public HttpResponseMessage saveNotes(
+            string studentId,
+            string videoDataId,
+            string notes,
+            string videoId
+            )
+        {
+            Video v = db.Videos.SingleOrDefault(x => x.v_id == videoId);
+            if (v == null)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid video ID");
+
+            using (var ctx = new Demo_Data_EnteredEntities())
+            {
+                ctx.Notes.Add(new Note()
+                {
+                    s_id = studentId,
+                    session = v.session,
+                    v_data_id = videoDataId,
+                    notes = notes
+                });
+
+                ctx.SaveChanges();
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, "Notes saved ");
+        }
+
     }
 }

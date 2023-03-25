@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Demo_Data_EnteredModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Demo_Data_EnteredModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="c_id" />
@@ -503,7 +503,8 @@
             <End Role="Videos" EntitySet="Videos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Demo_Data_EnteredModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -514,6 +515,8 @@
           <Property Name="c_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enrollements" Relationship="Self.FK_Enrollement_Course" FromRole="Course" ToRole="Enrollement" />
+          <NavigationProperty Name="Lesson_Plan" Relationship="Self.FK_Lesson_Plan_Course" FromRole="Course" ToRole="Lesson_Plan" />
         </EntityType>
         <EntityType Name="Enrollement">
           <Key>
@@ -525,6 +528,9 @@
           <Property Name="semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="grade" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="e_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Enrollement_Course" FromRole="Enrollement" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Enrollement_Student" FromRole="Enrollement" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Enrollement_Teacher" FromRole="Enrollement" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -536,6 +542,8 @@
           <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="h_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_History_Student" FromRole="History" ToRole="Student" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_History_Videos" FromRole="History" ToRole="Videos" />
         </EntityType>
         <EntityType Name="Lesson_Plan">
           <Key>
@@ -544,6 +552,9 @@
           <Property Name="c_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="week" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Lesson_Plan_Course" FromRole="Lesson_Plan" ToRole="Course" />
+          <NavigationProperty Name="List_Topic" Relationship="Self.FK_List_Topic_Lesson_Plan" FromRole="Lesson_Plan" ToRole="List_Topic" />
+          <NavigationProperty Name="Videos" Relationship="Self.FK_Videos_Lesson_Plan" FromRole="Lesson_Plan" ToRole="Videos" />
         </EntityType>
         <EntityType Name="List_Topic">
           <Key>
@@ -552,6 +563,9 @@
           <Property Name="topic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="topic_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Lesson_Plan" Relationship="Self.FK_List_Topic_Lesson_Plan" FromRole="List_Topic" ToRole="Lesson_Plan" />
+          <NavigationProperty Name="Presentations" Relationship="Self.FK_Presentation_List_Topic" FromRole="List_Topic" ToRole="Presentation" />
+          <NavigationProperty Name="video_data" Relationship="Self.FK_video_data_List_Topic" FromRole="List_Topic" ToRole="video_data" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -562,6 +576,8 @@
           <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="n_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Notes_Student" FromRole="Notes" ToRole="Student" />
+          <NavigationProperty Name="video_data" Relationship="Self.FK_Notes_video_data" FromRole="Notes" ToRole="video_data" />
         </EntityType>
         <EntityType Name="Presentation">
           <Key>
@@ -574,6 +590,9 @@
           <Property Name="t_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="marks" Type="Double" />
           <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="List_Topic" Relationship="Self.FK_Presentation_List_Topic" FromRole="Presentation" ToRole="List_Topic" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Presentation_Student" FromRole="Presentation" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Presentation_Teacher" FromRole="Presentation" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -583,7 +602,9 @@
           <Property Name="rate1" Type="Double" />
           <Property Name="v_data_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="r_id" Type="Int32" Nullable="false" />
+          <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Rate_Student" FromRole="Rate" ToRole="Student" />
+          <NavigationProperty Name="video_data" Relationship="Self.FK_Rate_video_data" FromRole="Rate" ToRole="video_data" />
         </EntityType>
         <EntityType Name="Section">
           <Key>
@@ -591,6 +612,7 @@
           </Key>
           <Property Name="sec_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Section" FromRole="Section" ToRole="Student" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -599,6 +621,13 @@
           <Property Name="s_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sec_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enrollements" Relationship="Self.FK_Enrollement_Student" FromRole="Student" ToRole="Enrollement" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Student" FromRole="Student" ToRole="History" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_Student" FromRole="Student" ToRole="Notes" />
+          <NavigationProperty Name="Presentations" Relationship="Self.FK_Presentation_Student" FromRole="Student" ToRole="Presentation" />
+          <NavigationProperty Name="Rates" Relationship="Self.FK_Rate_Student" FromRole="Student" ToRole="Rate" />
+          <NavigationProperty Name="Section" Relationship="Self.FK_Student_Section" FromRole="Student" ToRole="Section" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Student_User" FromRole="Student" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -618,6 +647,10 @@
           <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fac_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enrollements" Relationship="Self.FK_Enrollement_Teacher" FromRole="Teacher" ToRole="Enrollement" />
+          <NavigationProperty Name="Presentations" Relationship="Self.FK_Presentation_Teacher" FromRole="Teacher" ToRole="Presentation" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Teacher_User" FromRole="Teacher" ToRole="User" />
+          <NavigationProperty Name="Videos" Relationship="Self.FK_Videos_Teacher" FromRole="Teacher" ToRole="Videos" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -628,6 +661,8 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_User" FromRole="User" ToRole="Student" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teacher_User" FromRole="User" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="video_data">
           <Key>
@@ -640,6 +675,10 @@
           <Property Name="end_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="key_word" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="List_Topic" Relationship="Self.FK_video_data_List_Topic" FromRole="video_data" ToRole="List_Topic" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_video_data" FromRole="video_data" ToRole="Notes" />
+          <NavigationProperty Name="Rates" Relationship="Self.FK_Rate_video_data" FromRole="video_data" ToRole="Rate" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_video_data_Videos" FromRole="video_data" ToRole="Videos" />
         </EntityType>
         <EntityType Name="Video">
           <Key>
@@ -651,6 +690,10 @@
           <Property Name="session" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="less_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Videos" FromRole="Videos" ToRole="History" />
+          <NavigationProperty Name="Lesson_Plan" Relationship="Self.FK_Videos_Lesson_Plan" FromRole="Videos" ToRole="Lesson_Plan" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Videos_Teacher" FromRole="Videos" ToRole="Teacher" />
+          <NavigationProperty Name="video_data" Relationship="Self.FK_video_data_Videos" FromRole="Videos" ToRole="video_data" />
         </EntityType>
         <Association Name="FK_Enrollement_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="0..1" />

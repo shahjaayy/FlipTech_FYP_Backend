@@ -14,8 +14,21 @@ namespace FlipTech_FYP.Models
     
     public partial class Lesson_Plan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Lesson_Plan()
+        {
+            this.List_Topic = new HashSet<List_Topic>();
+            this.Videos = new HashSet<Video>();
+        }
+    
         public string c_id { get; set; }
         public string less_id { get; set; }
         public string week { get; set; }
+    
+        public virtual Course Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<List_Topic> List_Topic { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }

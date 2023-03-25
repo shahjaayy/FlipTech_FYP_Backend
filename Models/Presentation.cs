@@ -21,5 +21,9 @@ namespace FlipTech_FYP.Models
         public string t_id { get; set; }
         public Nullable<double> marks { get; set; }
         public int p_id { get; set; }
+    
+        public virtual List_Topic List_Topic { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

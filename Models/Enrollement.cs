@@ -20,5 +20,9 @@ namespace FlipTech_FYP.Models
         public string semester { get; set; }
         public string grade { get; set; }
         public int e_id { get; set; }
+    
+        public virtual Course Course { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

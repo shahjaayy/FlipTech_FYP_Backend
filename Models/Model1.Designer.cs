@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Usman\source\repos\FlipTech_FYP\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\USER\Source\Repos\FlipTech_FYP_Backend\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

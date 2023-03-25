@@ -19,5 +19,8 @@ namespace FlipTech_FYP.Models
         public string notes { get; set; }
         public string session { get; set; }
         public int n_id { get; set; }
+    
+        public virtual Student Student { get; set; }
+        public virtual video_data video_data { get; set; }
     }
 }

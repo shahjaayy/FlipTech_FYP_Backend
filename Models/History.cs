@@ -20,5 +20,8 @@ namespace FlipTech_FYP.Models
         public string session { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public int h_id { get; set; }
+    
+        public virtual Student Student { get; set; }
+        public virtual Video Video { get; set; }
     }
 }

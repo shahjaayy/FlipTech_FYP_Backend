@@ -14,6 +14,13 @@ namespace FlipTech_FYP.Models
     
     public partial class video_data
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public video_data()
+        {
+            this.Notes = new HashSet<Note>();
+            this.Rates = new HashSet<Rate>();
+        }
+    
         public string v_data_id { get; set; }
         public string v_id { get; set; }
         public string topic_id { get; set; }
@@ -21,5 +28,12 @@ namespace FlipTech_FYP.Models
         public string end_time { get; set; }
         public string key_word { get; set; }
         public string url { get; set; }
+    
+        public virtual List_Topic List_Topic { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Note> Notes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rate> Rates { get; set; }
+        public virtual Video Video { get; set; }
     }
 }

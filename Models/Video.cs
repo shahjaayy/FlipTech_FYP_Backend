@@ -14,11 +14,25 @@ namespace FlipTech_FYP.Models
     
     public partial class Video
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Video()
+        {
+            this.Histories = new HashSet<History>();
+            this.video_data = new HashSet<video_data>();
+        }
+    
         public string v_id { get; set; }
         public string tiltle { get; set; }
         public string t_id { get; set; }
         public string session { get; set; }
         public string url { get; set; }
         public string less_id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> Histories { get; set; }
+        public virtual Lesson_Plan Lesson_Plan { get; set; }
+        public virtual Teacher Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<video_data> video_data { get; set; }
     }
 }
